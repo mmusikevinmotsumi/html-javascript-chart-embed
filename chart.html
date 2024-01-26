@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CO2 Emissions Over Time</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Adding Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Importing Chart.js -->
+<style>
+.container {
+width: 80%;
+margin: auto;
+text-align: center;
+}
+.description {
+font-family: Arial, sans-serif;
+line-height: 1.6;
+margin-bottom: 20px;
+}
+#emissionsChart {
+max-height: 400px; /* Set a maximum height */
+}
+canvas {
+background-color: #fff; /* Updated for cleaner look */
+border: 1px solid #ddd;
+margin-bottom: 30px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adding shadow for depth */
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="container mt-4">
+<div class="description">
+<h1 class="mb-4">Understanding Our Global Carbon Footprint</h1>
+<p>Hey there! Have you ever wondered how much CO2 we, as a planet, have been releasing into the atmosphere over the years? Well, I've got some interesting insights for you from a dataset that tracks the average CO2 emissions per capita across the globe. Let's dive in and see what the numbers tell us!.</p>
+</div>
+<div>
+<canvas id="emissionsChart"></canvas>
+</div>
+
+
+
+</div>
+
+
+
+<script>
+var ctx = document.getElementById('emissionsChart').getContext('2d');
+var emissionsData = {
+labels: [1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
+datasets: [{
+label: 'Average CO2 Emissions (Metric Tons per Capita)',
+data: [4.178043189744673, 4.074044662435784, 4.037817752244693, 3.99141065216656, 3.9738010406390845, 3.965076480149362, 4.0350973431792765, 4.067741943390576, 4.058578865433279, 4.0392462363416435, 4.049275167142407, 4.1105455814084255, 4.130323768630265, 4.254188193718963, 4.322975528406821, 4.346139034858971, 4.411054567024663, 4.409738409570457, 4.377893630603231, 4.170719821301332, 4.304657221071243, 4.306741136619966, 4.306677849240033, 4.274620241984605, 4.186326981545855, 4.122293722918948, 4.104707423387395, 4.107609476152997, 4.102221661462596, 4.044007570431545, 3.767576749681728],
+backgroundColor: 'rgba(52, 152, 219, 0.5)', // Updated color for a modern look
+borderColor: 'rgba(41, 128, 185, 1)', // Slightly darker border
+borderWidth: 2 // Increased border width for visibility
+}]
+};
+
+
+
+var chart = new Chart(ctx, {
+type: 'line',
+data: emissionsData,
+options: {
+scales: {
+y: {
+beginAtZero: false
+}
+},
+responsive: true,
+maintainAspectRatio: true // Maintain aspect ratio
+}
+});
+</script>
+
+
+
+</body>
+</html>
